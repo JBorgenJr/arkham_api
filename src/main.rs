@@ -1,24 +1,19 @@
 mod api;
+mod config;
 mod handlers;
 mod models;
 mod service;
 mod types;
-
-use std::io;
+mod utils;
 
 use crate::types::cards::CardType;
 
 fn main() {
     println!("Enter a command <init|search>");
 
-    let mut input = String::new();
-    io::stdin()
-        .read_line(&mut input)
-        .expect("Failed to read line");
+    let input = utils::get_input();
 
-    let input = input.trim();
-
-    match input {
+    match input.as_str() {
         "init" => init(),
         "search" => search(),
         _ => println!("Invalid command"),
@@ -37,6 +32,12 @@ fn search() {
     println!("What type of card are you searching for?");
     let types_list = CardType::variants().join("|");
     println!("Enter a type <{}>", types_list);
+
+    let input = utils::get_input();
+
+    let test = CardType::from_str(&input);
+
+    println!("{:?}", test);
 
     match service::search() {
         Ok(_) => println!("Search complete"),

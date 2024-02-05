@@ -77,5 +77,6 @@ pub fn save_card_to_file(path: PathBuf, contents: String) {
 
 pub fn search() -> Result<(), String> {
     println!("Searching...");
+
     Ok(())
 }

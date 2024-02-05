@@ -1,12 +1,11 @@
 use serde_json::Value;
-
-const BASE_URL: &str = "https://arkhamdb.com/api/public/";
+use crate::config::API_BASE_URL;
 
 #[tokio::main]
 pub async fn init() -> Result<String, Box<dyn std::error::Error>> {
     println!("Fetching data from ArkhamDB...");
 
-    let url = format!("{}{}", BASE_URL, "cards/");
+    let url = format!("{}{}", API_BASE_URL, "cards/");
 
     let client = reqwest::Client::new();
 
