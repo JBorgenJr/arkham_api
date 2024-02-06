@@ -83,12 +83,14 @@ pub fn search(
 ) -> Result<Vec<investigator::Investigator /* TODO: Update types based on input */>, Box<dyn Error>>
 {
     println!("Searching...");
-    println!("Type: {}", card_type);
 
+    // Construct path to search
     let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?)
         .join("data")
-        .join(search_type) // TODO: Pass in which set to search
+        .join(search_type)
         .join(&card_type);
+
+    // get card type from input
 
     let mut investigators: Vec<investigator::Investigator> = Vec::new(); // TODO: Update types
                                                                          // based on input

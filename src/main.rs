@@ -29,17 +29,18 @@ fn init() {
 }
 
 fn search() {
-    println!("What type of search are you performing?");
-    // TODO: use enum to get list of types ex: global, set, type
+    // Search Scope
+    println!("What is the scope of the search?");
+    println!("Enter <global|set|type>"); // TODO: use enum to get list of types ex: global, set, type?
     let search_type = get_input();
+
+    // Search Card Types
     println!("What type of card are you searching for?");
-
-    // TODO: use enum to get list of types instead of ::variants()
-    let types_list = CardType::variants().join("|");
+    let types_list = CardType::variants().join("|"); // TODO: use enum to get list of types instead of ::variants()
     println!("Enter a type <{}>", types_list);
-
     let card_type = utils::get_input();
 
+    // Execute Search
     match service::search(search_type, card_type) {
         Ok(value) => println!(
             "Search complete: {}",
