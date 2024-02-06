@@ -1,5 +1,4 @@
 use std::fmt;
-// use crate::models;
 
 #[derive(Debug)]
 pub enum CardType {

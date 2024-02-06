@@ -29,18 +29,22 @@ fn init() {
 }
 
 fn search() {
+    println!("What type of search are you performing?");
+    // TODO: use enum to get list of types
     println!("What type of card are you searching for?");
+
+    // TODO: use enum to get list of types
     let types_list = CardType::variants().join("|");
     println!("Enter a type <{}>", types_list);
 
     let input = utils::get_input();
 
-    let test = CardType::from_str(&input);
+    // let test = CardType::from_str(&input);
 
-    println!("{:?}", test);
+    // println!("{:?}", test);
 
-    match service::search() {
-        Ok(_) => println!("Search complete"),
+    match service::search(input) {
+        Ok(value) => println!("Search complete: {:?}", value),
         Err(e) => println!("Error: {:?}", e),
     }
 }

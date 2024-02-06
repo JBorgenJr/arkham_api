@@ -1,7 +1,9 @@
 use crate::handlers;
+use crate::models::*;
 use crate::types::cards::CardType;
 use serde_json::Value;
 use std::env;
+use std::error::Error;
 use std::fs;
 use std::path::PathBuf;
 
@@ -75,8 +77,28 @@ pub fn save_card_to_file(path: PathBuf, contents: String) {
     }
 }
 
-pub fn search() -> Result<(), String> {
+pub fn search(input: String) -> Result<Vec<investigator::Investigator>, Box<dyn Error>> {
     println!("Searching...");
+    println!("Type: {}", input);
 
-    Ok(())
+    let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?)
+        .join("data")
+        .join("core")
+        .join(&input);
+
+    let mut investigators: Vec<investigator::Investigator> = Vec::new();
+
+    let entries = fs::read_dir(path)?;
+
+    for entry in entries {
+        let entry = entry?;
+        let contents = fs::read_to_string(entry.path())?;
+
+        let investigator: investigator::Investigator = serde_json::from_str(&contents)?;
+        investigators.push(investigator);
+    }
+
+    println!("Search complete");
+
+    Ok(investigators)
 }
