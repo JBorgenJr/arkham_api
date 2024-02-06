@@ -100,7 +100,6 @@ pub fn search(
 
         let investigator: investigator::Investigator = serde_json::from_str(contents.as_str())?; // TODO:
                                                                                                  // Update types based on input
-
         investigators.push(investigator);
     }
 

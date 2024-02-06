@@ -40,7 +40,8 @@ fn search() {
     let input = utils::get_input();
 
     match service::search(input) {
-        Ok(value) => println!("Search complete: {:?}", value),
+        Ok(value) => println!("Search complete: {:?}", value), // TODO: map function to use
+        // .to_string_pretty()?
         Err(e) => println!("Error: {:?}", e),
     }
 }
