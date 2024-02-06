@@ -6,7 +6,7 @@ mod service;
 mod types;
 mod utils;
 
-use crate::types::cards::CardType;
+use crate::{types::cards::CardType, utils::get_input};
 
 fn main() {
     println!("Enter a command <init|search>");
@@ -30,18 +30,21 @@ fn init() {
 
 fn search() {
     println!("What type of search are you performing?");
-    // TODO: use enum to get list of types
+    // TODO: use enum to get list of types ex: global, set, type
+    let search_type = get_input();
     println!("What type of card are you searching for?");
 
-    // TODO: use enum to get list of types
+    // TODO: use enum to get list of types instead of ::variants()
     let types_list = CardType::variants().join("|");
     println!("Enter a type <{}>", types_list);
 
-    let input = utils::get_input();
+    let card_type = utils::get_input();
 
-    match service::search(input) {
-        Ok(value) => println!("Search complete: {:?}", value), // TODO: map function to use
-        // .to_string_pretty()?
+    match service::search(search_type, card_type) {
+        Ok(value) => println!(
+            "Search complete: {}",
+            serde_json::to_string_pretty(&value).unwrap()
+        ),
         Err(e) => println!("Error: {:?}", e),
     }
 }

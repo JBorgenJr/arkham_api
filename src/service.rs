@@ -78,16 +78,17 @@ pub fn save_card_to_file(path: PathBuf, contents: String) {
 }
 
 pub fn search(
-    input: String,
+    search_type: String,
+    card_type: String,
 ) -> Result<Vec<investigator::Investigator /* TODO: Update types based on input */>, Box<dyn Error>>
 {
     println!("Searching...");
-    println!("Type: {}", input);
+    println!("Type: {}", card_type);
 
     let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?)
         .join("data")
-        .join("core") // TODO: Pass in which set to search
-        .join(&input);
+        .join(search_type) // TODO: Pass in which set to search
+        .join(&card_type);
 
     let mut investigators: Vec<investigator::Investigator> = Vec::new(); // TODO: Update types
                                                                          // based on input
