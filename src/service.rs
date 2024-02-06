@@ -77,16 +77,20 @@ pub fn save_card_to_file(path: PathBuf, contents: String) {
     }
 }
 
-pub fn search(input: String) -> Result<Vec<investigator::Investigator>, Box<dyn Error>> {
+pub fn search(
+    input: String,
+) -> Result<Vec<investigator::Investigator /* TODO: Update types based on input */>, Box<dyn Error>>
+{
     println!("Searching...");
     println!("Type: {}", input);
 
     let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?)
         .join("data")
-        .join("core")
+        .join("core") // TODO: Pass in which set to search
         .join(&input);
 
-    let mut investigators: Vec<investigator::Investigator> = Vec::new();
+    let mut investigators: Vec<investigator::Investigator> = Vec::new(); // TODO: Update types
+                                                                         // based on input
 
     let entries = fs::read_dir(path)?;
 
@@ -94,7 +98,9 @@ pub fn search(input: String) -> Result<Vec<investigator::Investigator>, Box<dyn 
         let entry = entry?;
         let contents = fs::read_to_string(entry.path())?;
 
-        let investigator: investigator::Investigator = serde_json::from_str(&contents)?;
+        let investigator: investigator::Investigator = serde_json::from_str(contents.as_str())?; // TODO:
+                                                                                                 // Update types based on input
+
         investigators.push(investigator);
     }
 

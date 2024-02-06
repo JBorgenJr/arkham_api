@@ -39,10 +39,6 @@ fn search() {
 
     let input = utils::get_input();
 
-    // let test = CardType::from_str(&input);
-
-    // println!("{:?}", test);
-
     match service::search(input) {
         Ok(value) => println!("Search complete: {:?}", value),
         Err(e) => println!("Error: {:?}", e),
