@@ -6,7 +6,10 @@ mod service;
 mod types;
 mod utils;
 
-use crate::{types::cards::CardType, utils::get_input};
+use crate::{
+    types::{cards::CardType, cycles::Cycle},
+    utils::get_input,
+};
 
 fn main() {
     loop {
@@ -37,8 +40,20 @@ fn init() {
 fn search() {
     // Search Scope
     println!("What is the scope of the search?");
-    println!("Enter <global|set|type>"); // TODO: use enum to get list of types ex: global, set, type?
+    println!("Enter <global|cycle|type>"); // TODO: use enum to get list of types ex: global, set, type?
     let search_type = get_input();
+
+    match search_type.as_str() {
+        "global" => {}
+        "cycle" => {
+            // retrieve list of cycles
+
+            let cycles_list = Cycle::variants().join("|"); // TODO: use enum to get list of types instead of ::variants()
+            println!("Cycles: {:?}", cycles_list)
+        }
+        "type" => {}
+        _ => println!("Invalid search scope"),
+    }
 
     // Search Card Types
     println!("What type of card are you searching for?");
