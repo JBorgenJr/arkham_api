@@ -7,7 +7,7 @@ mod types;
 mod utils;
 
 use crate::{
-    types::{cards::CardType, cycles::Cycle},
+    types::{cards::CardType /*cycles::Cycle*/},
     utils::get_input,
 };
 
@@ -48,8 +48,8 @@ fn search() {
         "cycle" => {
             // retrieve list of cycles
 
-            let cycles_list = Cycle::variants().join("|"); // TODO: use enum to get list of types instead of ::variants()
-            println!("Cycles: {:?}", cycles_list)
+            // let cycles_list = Cycle::variants().join("|"); // TODO: use enum to get list of types instead of ::variants()
+            // println!("Cycles: {:?}", cycles_list)
         }
         "type" => {}
         _ => println!("Invalid search scope"),
