@@ -1,4 +1,4 @@
-use crate::models;
+use crate::models::cards::*;
 use crate::service::{create_card_file, save_card_to_file};
 use serde_json::{Error, Value};
 
@@ -17,8 +17,7 @@ impl CardHandler for DefaultHander {
 pub struct ActHandler;
 impl CardHandler for ActHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let act: models::act::Act = serde_json::from_value(card.clone())?;
-
+        let act: act::Act = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let act_value = act.to_string_pretty();
         save_card_to_file(path, act_value?);
@@ -29,7 +28,7 @@ impl CardHandler for ActHandler {
 pub struct AgendaHandler;
 impl CardHandler for AgendaHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let agenda: models::agenda::Agenda = serde_json::from_value(card.clone())?;
+        let agenda: agenda::Agenda = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let agenda_value = agenda.to_string_pretty();
         save_card_to_file(path, agenda_value?);
@@ -40,7 +39,7 @@ impl CardHandler for AgendaHandler {
 pub struct AssetHandler;
 impl CardHandler for AssetHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let asset: models::asset::Asset = serde_json::from_value(card.clone())?;
+        let asset: asset::Asset = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let asset_value = asset.to_string_pretty();
         save_card_to_file(path, asset_value?);
@@ -51,7 +50,7 @@ impl CardHandler for AssetHandler {
 pub struct EnemyHandler;
 impl CardHandler for EnemyHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let enemy: models::enemy::Enemy = serde_json::from_value(card.clone())?;
+        let enemy: enemy::Enemy = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let enemy_value = enemy.to_string_pretty();
         save_card_to_file(path, enemy_value?);
@@ -62,7 +61,7 @@ impl CardHandler for EnemyHandler {
 pub struct EventHandler;
 impl CardHandler for EventHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let event: models::event::Event = serde_json::from_value(card.clone())?;
+        let event: event::Event = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let event_value = event.to_string_pretty();
         save_card_to_file(path, event_value?);
@@ -73,8 +72,7 @@ impl CardHandler for EventHandler {
 pub struct InvestigatorHandler;
 impl CardHandler for InvestigatorHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let investigator: models::investigator::Investigator =
-            serde_json::from_value(card.clone())?;
+        let investigator: investigator::Investigator = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let investigator_value = investigator.to_string_pretty();
         save_card_to_file(path, investigator_value?);
@@ -85,7 +83,7 @@ impl CardHandler for InvestigatorHandler {
 pub struct KeyHandler;
 impl CardHandler for KeyHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let key: models::key::Key = serde_json::from_value(card.clone())?;
+        let key: key::Key = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let key_value = key.to_string_pretty();
         save_card_to_file(path, key_value?);
@@ -96,7 +94,7 @@ impl CardHandler for KeyHandler {
 pub struct LocationHandler;
 impl CardHandler for LocationHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let location: models::location::Location = serde_json::from_value(card.clone())?;
+        let location: location::Location = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let location_value = location.to_string_pretty();
         save_card_to_file(path, location_value?);
@@ -107,7 +105,7 @@ impl CardHandler for LocationHandler {
 pub struct ScenarioHandler;
 impl CardHandler for ScenarioHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let scenario: models::scenario::Scenario = serde_json::from_value(card.clone())?;
+        let scenario: scenario::Scenario = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let scenario_value = scenario.to_string_pretty();
         save_card_to_file(path, scenario_value?);
@@ -118,7 +116,7 @@ impl CardHandler for ScenarioHandler {
 pub struct SkillHandler;
 impl CardHandler for SkillHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let skill: models::skill::Skill = serde_json::from_value(card.clone())?;
+        let skill: skill::Skill = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let skill_value = skill.to_string_pretty();
         save_card_to_file(path, skill_value?);
@@ -129,7 +127,7 @@ impl CardHandler for SkillHandler {
 pub struct StoryHandler;
 impl CardHandler for StoryHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let story: models::story::Story = serde_json::from_value(card.clone())?;
+        let story: story::Story = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let story_value = story.to_string_pretty();
         save_card_to_file(path, story_value?);
@@ -140,7 +138,7 @@ impl CardHandler for StoryHandler {
 pub struct TreacheryHandler;
 impl CardHandler for TreacheryHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error> {
-        let treachery: models::treachery::Treachery = serde_json::from_value(card.clone())?;
+        let treachery: treachery::Treachery = serde_json::from_value(card.clone())?;
         let path = create_card_file(card);
         let treachery_value = treachery.to_string_pretty();
         save_card_to_file(path, treachery_value?);

@@ -1,5 +1,5 @@
 use crate::handlers;
-use crate::models::*;
+use crate::models::cards::*;
 use crate::types::cards::CardType;
 use serde_json::Value;
 use std::env;
