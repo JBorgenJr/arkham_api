@@ -1,6 +1,6 @@
 # Arkham API
 
-Welcome to Arkham API! This Rust project is designed to help you manage and categorize cards related to the Arkham Horror: The Card Game using Rust. It provides functionalities for initialization and searching cards based on different criteria.
+Welcome to Arkham API! This Rust project is designed to help you manage and categorize cards related to the Arkham Horror: The Card Game using Rust.
 
 ## Table of Contents
 
@@ -24,7 +24,7 @@ Arkham API is structured with the following modules:
 
 ## Setup
 
-To set up Arkham API locally, follow these steps:
+To set up and build Arkham API locally, follow these steps:
 
 1. Clone the repository to your local machine.
 2. Ensure you have Rust installed. You can install it from [the official Rust website](https://www.rust-lang.org/tools/install).
@@ -32,17 +32,21 @@ To set up Arkham API locally, follow these steps:
 4. Run `cargo build` to build the project.
 5. Once built, you can run the project using `cargo run`.
 
+## Releases
+*Coming soon*
+
 ## Usage
 
 Arkham API provides a command-line interface (CLI) for interacting with its functionalities. Here are the available commands:
 
 - `init`: Initializes the project.
 - `search`: Searches for cards based on specified criteria.
+- `exit`: Exits the application
 
 To use the CLI:
 
 1. Run the project using `cargo run`.
-2. Follow the prompts to enter a command (`init` or `search`) and provide necessary inputs.
+2. Follow the prompts to enter a command (`init`, `search`, or `exit`) and provide necessary inputs.
 
 ## Contributing
 
