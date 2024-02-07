@@ -88,7 +88,7 @@ pub fn search(
     let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?)
         .join("data")
         .join(search_type)
-        .join(&card_type);
+        .join(card_type);
 
     // get card type from input
 
