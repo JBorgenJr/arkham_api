@@ -9,14 +9,20 @@ mod utils;
 use crate::{types::cards::CardType, utils::get_input};
 
 fn main() {
-    println!("Enter a command <init|search>");
+    loop {
+        println!("Enter a command <init|search|exit>");
 
-    let input = utils::get_input();
+        let input = utils::get_input();
 
-    match input.as_str() {
-        "init" => init(),
-        "search" => search(),
-        _ => println!("Invalid command"),
+        match input.as_str() {
+            "init" => init(),
+            "search" => search(),
+            "exit" => {
+                println!("Exiting...");
+                break;
+            }
+            _ => println!("Invalid command"),
+        }
     }
 }
 
