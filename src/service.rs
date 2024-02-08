@@ -1,9 +1,9 @@
 use crate::handlers;
-use crate::models::cards::*;
+// use crate::models::cards::*;
 use crate::types::cards::CardType;
 use serde_json::Value;
 use std::env;
-use std::error::Error;
+// use std::error::Error;
 use std::fs;
 use std::path::PathBuf;
 
@@ -77,36 +77,36 @@ pub fn save_card_to_file(path: PathBuf, contents: String) {
     }
 }
 
-pub fn search(
-    search_type: String,
-    card_type: String,
-) -> Result<Vec<investigator::Investigator /* TODO: Update types based on input */>, Box<dyn Error>>
-{
-    println!("Searching...");
+// pub fn search(
+//     search_type: String,
+//     card_type: String,
+// ) -> Result<Vec<investigator::Investigator /* TODO: Update types based on input */>, Box<dyn Error>>
+// {
+//     println!("Searching...");
 
-    // Construct path to search
-    let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?)
-        .join("data")
-        .join(search_type)
-        .join(card_type);
+//     // Construct path to search
+//     let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?)
+//         .join("data")
+//         .join(search_type)
+//         .join(card_type);
 
-    // get card type from input
+//     // get card type from input
 
-    let mut investigators: Vec<investigator::Investigator> = Vec::new(); // TODO: Update types
-                                                                         // based on input
+//     let mut investigators: Vec<investigator::Investigator> = Vec::new(); // TODO: Update types
+//                                                                          // based on input
 
-    let entries = fs::read_dir(path)?;
+//     let entries = fs::read_dir(path)?;
 
-    for entry in entries {
-        let entry = entry?;
-        let contents = fs::read_to_string(entry.path())?;
+//     for entry in entries {
+//         let entry = entry?;
+//         let contents = fs::read_to_string(entry.path())?;
 
-        let investigator: investigator::Investigator = serde_json::from_str(contents.as_str())?; // TODO:
-                                                                                                 // Update types based on input
-        investigators.push(investigator);
-    }
+//         let investigator: investigator::Investigator = serde_json::from_str(contents.as_str())?; // TODO:
+//                                                                                                  // Update types based on input
+//         investigators.push(investigator);
+//     }
 
-    println!("Search complete");
+//     println!("Search complete");
 
-    Ok(investigators)
-}
+//     Ok(investigators)
+// }
