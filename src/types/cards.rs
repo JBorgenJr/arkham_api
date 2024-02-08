@@ -61,22 +61,22 @@ impl fmt::Display for CardType {
     }
 }
 
-impl CardType {
-    pub fn variants() -> Vec<&'static str> {
-        vec![
-            "act",
-            "agenda",
-            "asset",
-            "enemy",
-            "event",
-            "investigator",
-            "key",
-            "location",
-            "scenario",
-            "skill",
-            "story",
-            "treachery",
-        ]
-    }
-}
+// impl CardType {
+//     pub fn variants() -> Vec<&'static str> {
+//         vec![
+//             "act",
+//             "agenda",
+//             "asset",
+//             "enemy",
+//             "event",
+//             "investigator",
+//             "key",
+//             "location",
+//             "scenario",
+//             "skill",
+//             "story",
+//             "treachery",
+//         ]
+//     }
+// }
 
