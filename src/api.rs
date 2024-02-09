@@ -1,5 +1,5 @@
-use serde_json::Value;
 use crate::config::API_BASE_URL;
+use serde_json::Value;
 
 #[tokio::main]
 pub async fn init() -> Result<String, Box<dyn std::error::Error>> {

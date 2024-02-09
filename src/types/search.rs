@@ -2,6 +2,5 @@
 pub enum SearchType {
     Set,
     Type,
-    Code
+    Code,
 }
-

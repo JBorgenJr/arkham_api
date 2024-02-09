@@ -8,7 +8,7 @@ mod utils;
 
 fn main() {
     loop {
-        println!("Enter a command <init|search|exit>");
+        println!("Enter a command: <init|search|exit>");
 
         let input = utils::get_input();
 
@@ -31,4 +31,3 @@ fn init() {
         Err(e) => println!("Error: {:?}", e),
     }
 }
-

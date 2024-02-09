@@ -1,6 +1,29 @@
-use crate::models::cards::*;
-use crate::service::{create_card_file, save_card_to_file};
+use crate::{
+    handlers,
+    models::cards::*,
+    service::{create_card_file, save_card_to_file},
+    types::cards::CardType,
+};
+
 use serde_json::{Error, Value};
+
+pub fn get_card_handler(card_code: CardType) -> Box<dyn handlers::CardHandler> {
+    match card_code {
+        CardType::Act => Box::new(handlers::ActHandler {}),
+        CardType::Agenda => Box::new(handlers::AgendaHandler {}),
+        CardType::Asset => Box::new(handlers::AssetHandler {}),
+        CardType::Enemy => Box::new(handlers::EnemyHandler {}),
+        CardType::Event => Box::new(handlers::EventHandler {}),
+        CardType::Investigator => Box::new(handlers::InvestigatorHandler {}),
+        CardType::Key => Box::new(handlers::KeyHandler {}),
+        CardType::Location => Box::new(handlers::LocationHandler {}),
+        CardType::Scenario => Box::new(handlers::ScenarioHandler {}),
+        CardType::Skill => Box::new(handlers::SkillHandler {}),
+        CardType::Story => Box::new(handlers::StoryHandler {}),
+        CardType::Treachery => Box::new(handlers::TreacheryHandler {}),
+        _ => Box::new(handlers::DefaultHander),
+    }
+}
 
 pub trait CardHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error>;
