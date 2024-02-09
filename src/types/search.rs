@@ -1,6 +1,6 @@
-#[derive(Debug)]
-pub enum SearchType {
-    Set,
-    Type,
-    Code,
-}
+// #[derive(Debug)]
+// pub enum SearchType {
+//     Set,
+//     Type,
+//     Code,
+// }
