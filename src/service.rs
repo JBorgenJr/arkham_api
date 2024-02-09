@@ -96,11 +96,8 @@ pub fn search() {
     println!("Expand search results? (y/n) > ");
     let expand = utils::get_input();
 
-    match expand.as_str() {
-        "y" => {
-            let results = serde_json::to_string_pretty(&results).unwrap();
-            println!("Search results: {}", results);
-        }
-        _ => {}
+    if expand == "y" {
+        let results = serde_json::to_string_pretty(&results).unwrap();
+        println!("Search results: {}", results);
     }
 }
