@@ -1,11 +1,8 @@
-use crate::handlers;
-// use crate::models::cards::*;
-use crate::types::cards::CardType;
+use crate::{handlers, types::cards::CardType, utils};
 use serde_json::Value;
-use std::env;
+use std::{env, fs, fs::File, io::Write, path::PathBuf};
 // use std::error::Error;
-use std::fs;
-use std::path::PathBuf;
+// use crate::models::cards::*;
 
 fn get_card_handler(card_code: CardType) -> Box<dyn handlers::CardHandler> {
     match card_code {
@@ -77,36 +74,25 @@ pub fn save_card_to_file(path: PathBuf, contents: String) {
     }
 }
 
-// pub fn search(
-//     search_type: String,
-//     card_type: String,
-// ) -> Result<Vec<investigator::Investigator /* TODO: Update types based on input */>, Box<dyn Error>>
-// {
-//     println!("Searching...");
+pub fn search() {
+    let files: Vec<Value> = utils::get_files();
 
-//     // Construct path to search
-//     let path = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?)
-//         .join("data")
-//         .join(search_type)
-//         .join(card_type);
+    let mut all_cards = File::create("output.json").unwrap();
 
-//     // get card type from input
+    writeln!(all_cards, "[").unwrap();
 
-//     let mut investigators: Vec<investigator::Investigator> = Vec::new(); // TODO: Update types
-//                                                                          // based on input
+    // Iterate over each JSON value in the files vector
+    for (index, file) in files.iter().enumerate() {
+        // Serialize the JSON value to a string
+        let json_string = serde_json::to_string_pretty(file).unwrap();
+        // Write the JSON string to the output file
+        writeln!(all_cards, "{}", json_string).unwrap();
+        // Write a comma after each JSON value except for the last one
+        if index < files.len() - 1 {
+            writeln!(all_cards, ",").unwrap();
+        }
+    }
 
-//     let entries = fs::read_dir(path)?;
+    writeln!(all_cards, "]").unwrap();
+}
 
-//     for entry in entries {
-//         let entry = entry?;
-//         let contents = fs::read_to_string(entry.path())?;
-
-//         let investigator: investigator::Investigator = serde_json::from_str(contents.as_str())?; // TODO:
-//                                                                                                  // Update types based on input
-//         investigators.push(investigator);
-//     }
-
-//     println!("Search complete");
-
-//     Ok(investigators)
-// }
