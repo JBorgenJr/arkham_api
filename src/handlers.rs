@@ -29,21 +29,11 @@ pub fn get_card_handler(card_code: CardType) -> Box<dyn handlers::CardHandler> {
         CardType::Skill => Box::new(handlers::SkillHandler {}),
         CardType::Story => Box::new(handlers::StoryHandler {}),
         CardType::Treachery => Box::new(handlers::TreacheryHandler {}),
-        _ => Box::new(handlers::DefaultHander),
     }
 }
 
 pub trait CardHandler {
     fn handle_card(&self, card: Value) -> Result<(), Error>;
-}
-
-pub struct DefaultHander;
-impl CardHandler for DefaultHander {
-    fn handle_card(&self, _card: Value) -> Result<(), Error> {
-        println!("Unknown card type: {:?}", _card.get("type_code").unwrap());
-
-        Ok(())
-    }
 }
 
 pub struct ActHandler;

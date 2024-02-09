@@ -68,6 +68,9 @@ pub fn search() {
     println!("Search by name (enter to skip): > ");
     let name_query = utils::get_input();
 
+    let types = CardType::all_types();
+    println!("Available types: {:?}", types);
+
     println!("Search by type (enter to skip): > ");
     let type_query = utils::get_input();
 

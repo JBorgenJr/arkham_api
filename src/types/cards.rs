@@ -1,5 +1,3 @@
-use std::fmt;
-
 #[derive(Debug)]
 pub enum CardType {
     Act,
@@ -14,7 +12,6 @@ pub enum CardType {
     Skill,
     Story,
     Treachery,
-    Unknown,
 }
 
 impl CardType {
@@ -32,50 +29,27 @@ impl CardType {
             "skill" => Some(Self::Skill),
             "story" => Some(Self::Story),
             "treachery" => Some(Self::Treachery),
-            _ => Some(Self::Unknown),
+            _ => None,
         }
     }
 }
 
-impl fmt::Display for CardType {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(
-            f,
-            "{}",
-            match self {
-                CardType::Act => "act",
-                CardType::Agenda => "agenda",
-                CardType::Asset => "asset",
-                CardType::Enemy => "enemy",
-                CardType::Event => "event",
-                CardType::Investigator => "investigator",
-                CardType::Key => "key",
-                CardType::Location => "location",
-                CardType::Scenario => "scenario",
-                CardType::Skill => "skill",
-                CardType::Story => "story",
-                CardType::Treachery => "treachery",
-                CardType::Unknown => "",
-            }
-        )
+impl CardType {
+    pub fn all_types() -> Vec<&'static str> {
+        let types: Vec<&str> = vec![
+            "Act",
+            "Agenda",
+            "Asset",
+            "Enemy",
+            "Event",
+            "Investigator",
+            "Key",
+            "Location",
+            "Scenario",
+            "Skill",
+            "Story",
+            "Treachery",
+        ];
+        types
     }
 }
-
-// impl CardType {
-//     pub fn variants() -> Vec<&'static str> {
-//         vec![
-//             "act",
-//             "agenda",
-//             "asset",
-//             "enemy",
-//             "event",
-//             "investigator",
-//             "key",
-//             "location",
-//             "scenario",
-//             "skill",
-//             "story",
-//             "treachery",
-//         ]
-//     }
-// }
