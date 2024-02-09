@@ -1,3 +1,7 @@
+// =================================
+// Main Application Logic
+// =================================
+
 mod api;
 mod config;
 mod handlers;
@@ -26,6 +30,7 @@ fn main() {
 
 fn init() {
     println!("Initializing...");
+
     match api::init() {
         Ok(resp) => service::categorize_cards(resp),
         Err(e) => println!("Error: {:?}", e),
