@@ -73,13 +73,23 @@ pub fn search() {
     let name_query = utils::get_input();
 
     let types = CardType::all_types();
-    println!("Available types: {:?}", types);
+    let mut x = 1;
+    for type_ in &types {
+        println!("{}: {}", x, type_);
+        x += 1;
+    }
+    // println!("Available types: {:?}", types);
 
     println!("Search by type (enter to skip): > ");
     let type_query = utils::get_input();
 
     let cycles = Cycle::all_cycles();
-    println!("Available cycles: {:?}", cycles);
+    let mut x = 1;
+    for cycle in cycles {
+        println!("{}: {}", x, cycle);
+        x += 1;
+    }
+    // println!("Available cycles: {:?}", cycles.);
 
     println!("Search by cycle (enter to skip): > ");
     let cycle_query = utils::get_input();
