@@ -1,4 +1,8 @@
-use crate::{handlers, types::cards::CardType, utils};
+use crate::{
+    handlers,
+    types::{cards::CardType, cycles::Cycle},
+    utils,
+};
 use serde_json::Value;
 use std::{env, fs, path::PathBuf};
 
@@ -74,9 +78,16 @@ pub fn search() {
     println!("Search by type (enter to skip): > ");
     let type_query = utils::get_input();
 
+    let cycles = Cycle::all_cycles();
+    println!("Available cycles: {:?}", cycles);
+
+    println!("Search by cycle (enter to skip): > ");
+    let cycle_query = utils::get_input();
+
     println!("You entered the following search criteria:");
     println!("Name: {}", name_query);
     println!("Type: {}", type_query);
+    println!("Cycle: {}", cycle_query);
 
     let cards: Vec<Value> = utils::get_all_cards();
 
@@ -100,7 +111,15 @@ pub fn search() {
                 false
             };
 
-            name_matches && type_matches
+            let cycle_matches = if let Some(cycle) = c.get("pack_code").and_then(|p| p.as_str()) {
+                cycle
+                    .to_lowercase()
+                    .contains(cycle_query.to_lowercase().as_str())
+            } else {
+                false
+            };
+
+            name_matches && type_matches && cycle_matches
         })
         .collect();
 
