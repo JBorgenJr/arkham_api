@@ -1,20 +1,20 @@
 #[derive(Debug)]
 pub enum Cycle {
-    _Core,
-    _TheDunwichLegacy,
-    _ThePathToCarcosa,
-    _TheForgottenAge,
-    _TheCircleUndone,
-    _TheDreamEaters,
-    _TheInnsmouthConspiracy,
-    _EdgeOfTheEarth,
-    _TheScarletKeys,
-    _TheFeastOfHemlockVale,
-    _Return,
-    _InvestigatorStarterDecks,
-    _SideStories,
-    _Promotional,
-    _Parallel,
+    Core,
+    TheDunwichLegacy,
+    ThePathToCarcosa,
+    TheForgottenAge,
+    TheCircleUndone,
+    TheDreamEaters,
+    TheInnsmouthConspiracy,
+    EdgeOfTheEarth,
+    TheScarletKeys,
+    TheFeastOfHemlockVale,
+    Return,
+    InvestigatorStarterDecks,
+    SideStories,
+    Promotional,
+    Parallel,
 }
 
 // impl Cycle {
@@ -40,25 +40,25 @@ pub enum Cycle {
 //     }
 // }
 
-// impl Cycle {
-//     pub fn all_cycles() -> Vec<&'static str> {
-//         let cycles: Vec<&str> = vec![
-//             "Core",
-//             "The Dunwich Legacy",
-//             "The Path to Carcosa",
-//             "The Forgotten Age",
-//             "The Circle Undone",
-//             "The Dream-Eaters",
-//             "The Innsmouth Conspiracy",
-//             "Edge of the Earth",
-//             "The Scarlet Keys",
-//             "The Feast of Hemlock Vale",
-//             "Return to...",
-//             "Investigator Starter Decks",
-//             "Side Stories",
-//             "Promotional",
-//             "Parallel",
-//         ];
-//         cycles
-//     }
-// }
+impl Cycle {
+    pub fn all_cycles() -> Vec<&'static str> {
+        let cycles: Vec<&str> = vec![
+            "Core",
+            "The Dunwich Legacy",
+            "The Path to Carcosa",
+            "The Forgotten Age",
+            "The Circle Undone",
+            "The Dream-Eaters",
+            "The Innsmouth Conspiracy",
+            "Edge of the Earth",
+            "The Scarlet Keys",
+            "The Feast of Hemlock Vale",
+            "Return to...",
+            "Investigator Starter Decks",
+            "Side Stories",
+            "Promotional",
+            "Parallel",
+        ];
+        cycles
+    }
+}

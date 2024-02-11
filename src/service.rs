@@ -1,7 +1,7 @@
 use crate::{
     handlers,
-    types::{cards::CardType /*cycles::Cycle*/},
-    utils,
+    types::{cards::CardType, cycles::Cycle},
+    utils
 };
 use serde_json::Value;
 use std::{env, fs, path::PathBuf};
@@ -81,15 +81,9 @@ pub fn search() {
 
     match selection {
         Some("all") => println!("Searching all cards..."),
-        Some("cycle") => println!("Searching by cycle..."),
+        Some("cycle") => cycle_search(),
         _ => println!("Invalid search scope"),
     }
-
-    // match input.as_str() {
-    //     "all" | "1" => println!("Searching all cards..."),
-    //     "2" | "cycle" => println!("Searching by cycle..."),
-    //     _ => println!("Invalid search scope"),
-    // }
 
     // println!("Search by name (enter to skip): > ");
     // let name_query = utils::get_input();
@@ -165,4 +159,67 @@ pub fn search() {
     //     let results = serde_json::to_string_pretty(&results).unwrap();
     //     println!("Search results: {}", results);
     // }
+}
+
+fn cycle_search() {
+    println!("Searching by cycle...");
+    let cycles = Cycle::all_cycles();
+    let mut x = 1;
+    for cycle in &cycles {
+        println!("{}: {}", x, cycle);
+        x += 1;
+    }
+
+    let input = utils::get_input();
+    let selection = utils::return_selection(input, cycles, Some(9));
+    match selection {
+        Some(cycle) => {
+            let cards = filter(cycle);
+            let results = serde_json::to_string_pretty(&cards).unwrap();
+            println!("Search results: {}", results);
+        }
+        _ => println!("Invalid cycle selection"),
+    }
+}
+
+fn filter(cycle_query: &str) {
+    let cards: Vec<Value> = utils::get_all_cards();
+
+    let results: Vec<&Value> = cards
+        .iter()
+        .filter(|c| {
+            // // === Name & Type Matching ===
+            // let name_matches = if let Some(name) = c.get("name").and_then(|n| n.as_str()) {
+            //     name.to_lowercase()
+            //         .contains(name_query.to_lowercase().as_str())
+            // } else {
+            //     false
+            // };
+
+            // let type_matches = if let Some(card_type) = c.get("type_code").and_then(|t| t.as_str())
+            // {
+            //     card_type
+            //         .to_lowercase()
+            //         .contains(type_query.to_lowercase().as_str())
+            // } else {
+            //     false
+            // };
+
+            let cycle_matches = if let Some(cycle) = c.get("pack_code").and_then(|p| p.as_str()) {
+                cycle
+                    .to_lowercase()
+                    .contains(cycle_query.to_lowercase().as_str())
+            } else {
+                false
+            };
+
+            // name_matches && type_matches && cycle_matches
+            cycle_matches
+        })
+        .collect();
+
+    println!("Search results count: {}", results.len());
+    for result in results {
+        println!("{}", result.get("name").unwrap());
+    }
 }
