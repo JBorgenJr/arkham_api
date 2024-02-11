@@ -34,22 +34,22 @@ impl CardType {
     }
 }
 
-impl CardType {
-    pub fn all_types() -> Vec<&'static str> {
-        let types: Vec<&str> = vec![
-            "Act",
-            "Agenda",
-            "Asset",
-            "Enemy",
-            "Event",
-            "Investigator",
-            "Key",
-            "Location",
-            "Scenario",
-            "Skill",
-            "Story",
-            "Treachery",
-        ];
-        types
-    }
-}
+// impl CardType {
+//     pub fn all_types() -> Vec<&'static str> {
+//         let types: Vec<&str> = vec![
+//             "Act",
+//             "Agenda",
+//             "Asset",
+//             "Enemy",
+//             "Event",
+//             "Investigator",
+//             "Key",
+//             "Location",
+//             "Scenario",
+//             "Skill",
+//             "Story",
+//             "Treachery",
+//         ];
+//         types
+//     }
+// }

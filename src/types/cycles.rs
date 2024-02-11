@@ -40,25 +40,25 @@ pub enum Cycle {
 //     }
 // }
 
-impl Cycle {
-    pub fn all_cycles() -> Vec<&'static str> {
-        let cycles: Vec<&str> = vec![
-            "Core",
-            "The Dunwich Legacy",
-            "The Path to Carcosa",
-            "The Forgotten Age",
-            "The Circle Undone",
-            "The Dream-Eaters",
-            "The Innsmouth Conspiracy",
-            "Edge of the Earth",
-            "The Scarlet Keys",
-            "The Feast of Hemlock Vale",
-            "Return to...",
-            "Investigator Starter Decks",
-            "Side Stories",
-            "Promotional",
-            "Parallel",
-        ];
-        cycles
-    }
-}
+// impl Cycle {
+//     pub fn all_cycles() -> Vec<&'static str> {
+//         let cycles: Vec<&str> = vec![
+//             "Core",
+//             "The Dunwich Legacy",
+//             "The Path to Carcosa",
+//             "The Forgotten Age",
+//             "The Circle Undone",
+//             "The Dream-Eaters",
+//             "The Innsmouth Conspiracy",
+//             "Edge of the Earth",
+//             "The Scarlet Keys",
+//             "The Feast of Hemlock Vale",
+//             "Return to...",
+//             "Investigator Starter Decks",
+//             "Side Stories",
+//             "Promotional",
+//             "Parallel",
+//         ];
+//         cycles
+//     }
+// }
