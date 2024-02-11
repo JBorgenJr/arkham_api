@@ -16,10 +16,10 @@ pub fn get_input() -> String {
     input.trim().to_string().to_lowercase()
 }
 
-pub fn return_selection(input: String, options: Vec<&str>) -> Option<&str> {
+pub fn return_selection(input: String, options: Vec<&str>, threshold: Option<usize>) -> Option<&str> {
     let mut best_match: Option<&str> = None;
     let mut min_distance = usize::MAX;
-    let threshold = 2; // Example threshold - adjust as needed
+    let threshold = threshold.unwrap_or(3);
 
     for option in options {
         let distance = levenshtein::levenshtein(&input, option);

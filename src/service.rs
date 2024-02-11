@@ -77,7 +77,7 @@ pub fn search() {
         x += 1;
     }
     let input = utils::get_input();
-    let selection = utils::return_selection(input, scopes);
+    let selection = utils::return_selection(input, scopes, None);
 
     match selection {
         Some("all") => println!("Searching all cards..."),
