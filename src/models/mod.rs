@@ -1,12 +1,1 @@
-pub mod act;
-pub mod agenda;
-pub mod asset;
-pub mod enemy;
-pub mod event;
-pub mod investigator;
-pub mod key;
-pub mod location;
-pub mod scenario;
-pub mod skill;
-pub mod story;
-pub mod treachery;
+pub mod cards;

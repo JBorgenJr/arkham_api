@@ -1,35 +1,38 @@
+// =================================
+// Main Application Logic
+// =================================
+
 mod api;
+mod config;
+mod handlers;
 mod models;
 mod service;
-
-use std::io;
+mod types;
+mod utils;
 
 fn main() {
-    println!("Enter a command <init>");
+    loop {
+        println!("Enter a command: <init|search|exit>");
 
-    let mut input = String::new();
-    io::stdin()
-        .read_line(&mut input)
-        .expect("Failed to read line");
+        let input = utils::get_input();
 
-    let input = input.trim();
-
-    match input {
-        "init" => init(),
-        "update" => update(),
-        _ => println!("Invalid command"),
+        match input.as_str() {
+            "init" => init(),
+            "search" => service::search(),
+            "exit" => {
+                println!("Exiting...");
+                break;
+            }
+            _ => println!("Invalid command"),
+        }
     }
 }
 
 fn init() {
     println!("Initializing...");
+
     match api::init() {
         Ok(resp) => service::categorize_cards(resp),
         Err(e) => println!("Error: {:?}", e),
     }
-}
-
-fn update() {
-    println!("Update not implemented yet.");
-    // println!("Updating...");
 }
