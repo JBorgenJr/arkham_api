@@ -17,28 +17,28 @@ pub enum Cycle {
     Parallel,
 }
 
-// impl Cycle {
-//     pub fn from_str(s: &str) -> Option<Self> {
-//         match s.to_lowercase().as_str() {
-//             "core" => Some(Self::Core),
-//             "dwl" => Some(Self::TheDunwichLegacy),
-//             "ptc" => Some(Self::ThePathToCarcosa),
-//             "tfa" => Some(Self::TheForgottenAge),
-//             "tcu" => Some(Self::TheCircleUndone),
-//             "tde" => Some(Self::TheDreamEaters),
-//             "tic" => Some(Self::TheInnsmouthConspiracy),
-//             "eoe" => Some(Self::EdgeOfTheEarth),
-//             "tsk" => Some(Self::TheScarletKeys),
-//             "fhv" => Some(Self::TheFeastOfHemlockVale),
-//             "return" => Some(Self::Return),
-//             "investigator" => Some(Self::InvestigatorStarterDecks),
-//             "side_stories" => Some(Self::SideStories),
-//             "promotional" => Some(Self::Promotional),
-//             "parallel" => Some(Self::Parallel),
-//             _ => None,
-//         }
-//     }
-// }
+impl Cycle {
+    pub fn from_str(s: &str) -> Option<Self> {
+        match s.to_lowercase().as_str() {
+            "core" => Some(Self::Core),
+            "dwl" => Some(Self::TheDunwichLegacy),
+            "ptc" => Some(Self::ThePathToCarcosa),
+            "tfa" => Some(Self::TheForgottenAge),
+            "tcu" => Some(Self::TheCircleUndone),
+            "tde" => Some(Self::TheDreamEaters),
+            "tic" => Some(Self::TheInnsmouthConspiracy),
+            "eoe" => Some(Self::EdgeOfTheEarth),
+            "tsk" => Some(Self::TheScarletKeys),
+            "fhv" => Some(Self::TheFeastOfHemlockVale),
+            "return" => Some(Self::Return),
+            "investigator" => Some(Self::InvestigatorStarterDecks),
+            "side_stories" => Some(Self::SideStories),
+            "promotional" => Some(Self::Promotional),
+            "parallel" => Some(Self::Parallel),
+            _ => None,
+        }
+    }
+}
 
 impl Cycle {
     pub fn all_cycles() -> Vec<&'static str> {

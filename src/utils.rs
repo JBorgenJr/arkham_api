@@ -2,9 +2,11 @@ use serde_json::Value;
 use std::{env, fs, io, path::PathBuf};
 use walkdir::WalkDir;
 
+use crate::types::cycles::Cycle;
+
 // =================================
 //  User Input & Data Loading Utilities
-// =================================
+// ================================
 
 pub fn get_input() -> String {
     let mut input = String::new();
@@ -61,3 +63,19 @@ pub fn get_all_cards() -> Vec<Value> {
 
     cards
 }
+
+pub fn get_all_cycle_cards(cycle: Cycle) /*-> Vec<Value>*/
+{
+    println!("Searching for cards in cycle: {:?}", cycle);
+
+    let mut file_path = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
+    file_path.push("data");
+
+    // let mut cards = Vec::new();
+}
+
+// pub fn get_all_investigator_cards() -> Vec<Value> {}
+
+// pub fn build_player_deck() -> Vec<Value> {}
+
+// pub fn build_encounter_deck() -> Vec<Value> {}

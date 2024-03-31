@@ -1,7 +1,7 @@
 use crate::{
     handlers,
     types::{cards::CardType, cycles::Cycle},
-    utils
+    utils,
 };
 use serde_json::Value;
 use std::{env, fs, path::PathBuf};
